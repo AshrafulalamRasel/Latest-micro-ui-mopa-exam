@@ -1,0 +1,168 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Skill</h4>
+                    </div>
+                    <div class="content">
+                        <form (ngSubmit)="onSubmit()" [formGroup]="employeeForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" style="text-align: center">Employee Name</label>
+                                        <input [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                                               class="form-control"
+                                               formControlName="name" id="name"
+                                               value="{{employeeList?.employeeName}}"
+                                               placeholder="Employee name input."
+                                               type="text"/>
+                                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.name.errors.required" class="text-danger">Employe Name is
+                                                required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-center" for="dateOfBirth">Employee Date Of Birth</label>
+                                        <input [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }"
+                                               class="form-control"
+                                               formControlName="dateOfBirth" id="dateOfBirth"
+                                               value="{{employeeList?.dateOfBirth | date:'yyyy-MM-dd'}}"
+                                               pattern=""
+                                               placeholder="Employee Date Of Birth  input."
+                                               type="date"/>
+                                        <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
+                                            <div *ngIf="f.dateOfBirth.errors.required" class="text-danger">Employee Date Of Birth  is
+                                                required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-center" for="employeeAge">Employee Age</label>
+                                        <input [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }"
+                                               class="form-control"
+                                               formControlName="employeeAge" id="employeeAge"
+                                               value="{{employeeList?.employeeAge}}"
+                                               placeholder="Employee Age."
+                                               type="text"/>
+                                        <div *ngIf="submitted && f.employeeAge.errors" class="invalid-feedback">
+                                            <div *ngIf="f.employeeAge.errors.required" class="text-danger">Employee Age  is
+                                                required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address" style="text-align: center">Employee Address</label>
+                                        <input [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+                                               class="form-control"
+                                               formControlName="address" id="address"
+                                               value="{{employeeList?.address}}"
+                                               placeholder="Employee address input."
+                                               type="text"/>
+                                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                            <div *ngIf="f.address.errors.required" class="text-danger">Address is
+                                                required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="skill" style="text-align: center">skill</label>
+                                        <select [ngClass]="{ 'is-invalid': submitted && f.skill.errors }"
+                                                class="form-control"
+                                                formControlName="skill">
+                                            <option *ngFor="let skill of skillList" [value]="skill.id">{{skill.skillDescription}}</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.skill.errors" class="invalid-feedback">
+                                            <div *ngIf="f.skill.errors.required" class="text-danger">skill is
+                                                required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <button class="btn btn-primary">সংরক্ষণ করুন</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+              <div class="col-md-7">
+                 <div class="card card-user">
+                     <div class="content table-responsive table-full-width">
+                         <table mat-table [dataSource]="employeeListDataSource" class="mat-elevation-z8">
+
+                             <ng-container matColumnDef="govId">
+                                 <th mat-header-cell *matHeaderCellDef>
+                                     <pre>ID</pre>
+                                 </th>
+                                 <td mat-cell *matCellDef="let element;"> {{element.id}} </td>
+                             </ng-container>
+                             <!-- Weight Column -->
+                             <ng-container matColumnDef="name">
+                                 <th mat-header-cell *matHeaderCellDef>
+                                     <pre>Name</pre>
+                                 </th>
+                                 <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+                             </ng-container>
+
+
+                             <!-- Symbol Column -->
+                             <ng-container matColumnDef="dateOfBirth">
+                                 <th mat-header-cell *matHeaderCellDef>
+                                     <pre>Date Of Birth</pre>
+                                 </th>
+                                 <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}}</td>
+                             </ng-container>
+                             <!-- Symbol Column -->
+                             <ng-container matColumnDef="age">
+                                 <th mat-header-cell *matHeaderCellDef>
+                                     <pre>Age</pre>
+                                 </th>
+                                 <td mat-cell *matCellDef="let element">{{element.employeeAge}}</td>
+                             </ng-container>
+                             <!-- Symbol Column -->
+
+                             <!-- Symbol Column -->
+                             <ng-container matColumnDef="address">
+                                 <th mat-header-cell *matHeaderCellDef>
+                                     <pre>Address</pre>
+                                 </th>
+                                 <td mat-cell *matCellDef="let element">{{element.address}}</td>
+                             </ng-container>
+                             <!-- Symbol Column -->
+                             <ng-container matColumnDef="action">
+                                 <th mat-header-cell *matHeaderCellDef>
+                                     <pre>Action</pre>
+                                 </th>
+                                 <td  style="text-align: center" mat-cell *matCellDef="let element"
+                                      (click)="edit(element.id)">
+                                     <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                         <mat-icon style="font-size: 20px; color: #761c19" [matTooltip]="icon">edit</mat-icon>
+                                     </button>
+                                 </td>
+                             </ng-container>
+
+                             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+}
+
+table td, table th {
+    padding: 2px 10px;
+}
+.mat-header-cell {
+    font-size: small;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mat-cell {
+    font-size: smaller;
+    padding: 0px 0px 0px 4px;
+    text-align: left;
+}
+
+.example-container {
+    height: 600px;
+    max-width: 100%;
+    overflow: auto;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.3em 0 0.4em 0 !important;
+    top: -0.5em;
+    margin: 0;
+
+}
+
+::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -1.25em;
+}
+.spinner__loading {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+}
