@@ -37,10 +37,11 @@ export class appService {
             },
         );
     }
-    createEmployee(name: string,dateOfBirth: string, employeeAge: string,address: string,skill: string): Observable<any> {
+    createEmployee(id:string,name: string,dateOfBirth: string, employeeAge: string,address: string,skill: string): Observable<any> {
 
         return this.http.post(this.createEmployeeApi, {
 
+            id: id,
             employeeName: name,
             employeeAge: employeeAge,
             skillId: skill,

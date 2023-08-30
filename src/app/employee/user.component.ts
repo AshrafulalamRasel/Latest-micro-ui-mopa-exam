@@ -76,7 +76,7 @@ export class UserComponent implements OnInit {
     if (this.employeeForm.invalid) {
       return;
     }
-    this.appService.createEmployee(this.f.name.value,this.f.dateOfBirth.value,this.f.employeeAge.value,this.f.address.value,this.f.skill.value)
+    this.appService.createEmployee(this.employeeById,this.f.name.value,this.f.dateOfBirth.value,this.f.employeeAge.value,this.f.address.value,this.f.skill.value)
         .subscribe(
             data => {
               this.getSkillList();
